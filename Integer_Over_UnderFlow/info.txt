@@ -1,0 +1,14 @@
+Integer Overflow/UnderFlow ->
+1. the integer Overflow/UnderFlow occurs when in code, we try to pass the range of the uint/integer
+likw for uint8 -> the range is 0 to 255. so, when we try to add 1 in max range of uint(255+1), so it will be overflow and it will return 0(goes to 255->0).
+underflow happens when we subtract to its minimum value(like uint8 has 0 min value and if we do 0-1, it simply wraps to 255)
+It happens before solidity 0.8.00. so in modern versions, it will be checked internally in solidity and it will dont overflow/underflow
+But if we do unchecked like this : 
+            unchecked{
+                uint8 x = 0;
+                x-=1;
+            }
+    This unchecked bypass internal solidity checks and will directly execute. Devs used this to save Gas Fee.
+
+to see the code(Bug Code), go to Integer.sol
+To Prevent It, check Solution File (IntegerSolution.sol)
