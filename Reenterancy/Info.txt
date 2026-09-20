@@ -1,0 +1,16 @@
+What is Reentrancy?
+
+Reentrancy happens when:
+
+Contract A sends ETH to Contract B.
+Before Contract A finishes its execution, Contract B calls back into Contract A.
+Contract A's state has not been updated yet.
+The attacker repeats the process and drains funds.
+
+Think of it like:
+
+Bank gives you money before updating your balance.
+
+While the bank is still processing, you ask for another withdrawal.
+
+The bank still thinks you have the original balance

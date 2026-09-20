@@ -4,7 +4,6 @@ pragma solidity ^0.8.20;
 contract Targated{
     mapping(address=>uint) public balance;
 
-
     function deposit() public payable {
         require(msg.value>0,"Must Greater Than 0 ETH");
         balance[msg.sender] += msg.value;
@@ -14,5 +13,7 @@ contract Targated{
         require(balance[msg.sender]>_amount,"Not Enough Balance");
         (bool success,) = payable(msg.sender).call{value:_amount}("");
         require(success,'Transaction Failed');
+        balance[msg.sender] -= _amount;
     }
+    receive() external payable{}
 }
