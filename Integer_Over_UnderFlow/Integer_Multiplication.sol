@@ -21,4 +21,4 @@ contract Multiply{
             return(num1*num2);
         }
     }
-}
+}       
